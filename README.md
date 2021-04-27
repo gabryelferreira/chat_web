@@ -1,5 +1,5 @@
 # ChatWeb
-A fully working chat app made with Angular, Node.js, Socket.io, MySQL and AWS S3.
+A fully working chat app made with Angular 10, Node.js, Socket.io, MySQL and AWS S3.
 
 It has direct and group messages, sound notifications, file upload, typing users and a lot more.
 
