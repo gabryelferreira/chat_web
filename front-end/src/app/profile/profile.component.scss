@@ -1,0 +1,37 @@
+#profile-page {
+    position: relative;
+    padding: 30px;
+
+    .card-edit-profile {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        border-radius: 4px;
+        background: #2f3136;
+        border: 1px solid #161616;
+        padding: 20px 25px;
+
+        .editable-area {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+
+
+            .fields {
+                position: relative;
+                margin-left: 25px;
+                flex: 1;
+            }
+
+        }
+
+        .footer-options {
+            position: relative;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+    }
+
+}

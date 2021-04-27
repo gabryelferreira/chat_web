@@ -1,0 +1,41 @@
+<div class="chat-message-component" [id]="'chat-message-' + message.uuid" style="width: 100%">
+        
+    <div *ngIf="!messageBefore || (messageBefore?.createdAt | date: 'dd/MM/yyyy') !== (message.createdAt | date: 'dd/MM/yyyy')" class="date-info">
+        <div class="date-container">
+            <p>{{ message.createdAt | date: 'EEEE, dd \'de\' MMMM \'de\' yyyy' }}</p>
+        </div>
+    </div>
+
+    <div *ngIf="!messageBefore || messageBefore?.user.uuid !== message.user.uuid ||
+        (messageBefore?.createdAt | date: 'dd/MM/yyyy') !== (message.createdAt | date: 'dd/MM/yyyy')"
+        class="message message-margin-top">
+        <div class="left-message-container">
+            <div *ngIf="!message.user.imgUrl" class="fake-img">
+                <mat-icon>person</mat-icon>
+            </div>
+            <img *ngIf="message.user.imgUrl" [src]="message.user.imgUrl" />
+        </div>
+        <div class="right-message-container">
+            <div class="title">
+                <p class="name">{{ message.user.name }}</p>
+                <p class="date">{{ message.createdAt | date: 'HH:mm' }}</p>
+            </div>
+            <p *ngIf="message.message" [innerHTML]="message.message | linkify" class="text"></p>
+            <chat-attachment *ngIf="message.attachment?.url" [attachment]="message.attachment"></chat-attachment>
+        </div>
+    </div>
+
+    <div *ngIf="messageBefore &&
+        messageBefore?.user.uuid === message.user.uuid &&
+        (messageBefore?.createdAt | date: 'dd/MM/yyyy') === (message.createdAt | date: 'dd/MM/yyyy')"
+        class="message">
+        <div class="left-message-container">
+            <p>{{ message.createdAt | date: 'HH:mm' }}</p>
+        </div>
+        <div class="right-message-container">
+            <p *ngIf="message.message" [innerHTML]="message.message | linkify" class="text"></p>
+            <chat-attachment *ngIf="message.attachment?.url" [attachment]="message.attachment"></chat-attachment>
+        </div>
+    </div>
+
+</div>

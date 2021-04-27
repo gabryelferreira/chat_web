@@ -1,0 +1,91 @@
+#side-menu-component {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .side-menu-scrollable-area {
+    position: relative;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    padding: 10px;
+
+    &::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        background: #444;
+      }
+    }
+  }
+  
+
+
+  .options-container {
+    position: relative;
+    width: 100%;
+
+    button.option-btn {
+      position: relative;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      background: transparent;
+      border: 0;
+      font-size: 14.5px;
+      color: #ccc;
+      font-weight: 500;
+      font-family: Roboto, sans-serif;
+      padding: 10px;
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 3px;
+
+      &:hover {
+        color: #eee;
+      }
+
+      &.selected {
+        background: rgba(79, 84, 92, 0.5);
+        color: #fff;
+      }
+  
+      &:not(.selected):hover {
+        background: rgba(79, 84, 92, 0.3);
+      }
+
+      mat-icon {
+        margin-right: 15px;
+      }
+    }
+
+  }
+
+  .conversations-container {
+    position: relative;
+    width: 100%;
+    padding-top: 25px;
+
+    .df-list-title {
+      padding: 0 10px;
+    }
+    
+    .empty-rooms {
+      position: relative;
+      padding: 0 10px;
+      box-sizing: border-box;
+
+      .df-list-description {
+        margin: 10px 0 15px;
+      }
+
+    }
+
+  }
+  
+}

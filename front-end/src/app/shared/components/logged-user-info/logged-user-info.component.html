@@ -1,0 +1,12 @@
+<div *ngIf="user" id="logged-user-info-component">
+    <div class="df-img-container">
+        <mat-icon *ngIf="!user.imgUrl">person</mat-icon>
+        <img *ngIf="user.imgUrl" [src]="user.imgUrl" />
+    </div>
+    <div class="user-info">
+        <p class="name">{{ user.name }}</p>
+    </div>
+    <div class="options">
+        <mat-icon (click)="openProfile()" [matTooltip]="'Editar perfil'">settings</mat-icon>
+    </div>
+</div>

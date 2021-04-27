@@ -1,0 +1,20 @@
+<div id="dialog-aviso">
+  <div class="texts-container">
+    <h2>{{ data.title }}</h2>
+    <p>{{ data.subtitle }}</p>
+  </div>
+  <div class="buttons-container">
+    <button *ngIf="!data.options.buttons || data.options.buttons.length === 0"
+        class="default-button"
+        type="button"
+        (click)="onButtonClick()">
+        OK
+    </button>
+    <button *ngFor="let button of data.options.buttons"
+        type="button"
+        class="default-button {{ button.class }}"
+        (click)="onButtonClick(button)">
+        {{ button.text }}
+    </button>
+  </div>
+</div>

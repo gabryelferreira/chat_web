@@ -1,0 +1,43 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "node server.js",
+    "dev": "nodemon src/server.ts",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js --config lib/config/ormConfig.js",
+    "migration": "tsc && ts-node ./node_modules/typeorm/cli.js migration:run --config lib/config/ormConfig.js"
+  },
+  "main": "server.js",
+  "dependencies": {
+    "aws-sdk": "^2.747.0",
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "raw-body": "^2.4.1",
+    "reflect-metadata": "^0.1.13",
+    "socket.io": "^2.3.0",
+    "typeorm": "^0.2.25",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.6",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/socket.io": "^2.1.11",
+    "@types/uuid": "^8.0.0",
+    "nodemon": "^2.0.3",
+    "ts-node": "^8.10.1",
+    "tslib": "^1.13.0",
+    "typescript": "^3.8.0"
+  },
+  "private": true
+}

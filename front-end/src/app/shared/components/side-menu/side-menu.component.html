@@ -1,0 +1,69 @@
+<div id="side-menu-component">
+
+   <logged-user-info (onCloseMenu)="onCloseMenu.emit()"></logged-user-info>
+    
+    <div class="side-menu-scrollable-area">
+        <div class="options-container">
+            <button (click)="openSearchUsers()" type="button" class="option-btn"
+                [class.selected]="currentUrl == '/buscar'">
+                <mat-icon>person_search</mat-icon>
+                Procurar usuários
+            </button>
+            <button (click)="openCreateGroup()" type="button" class="option-btn">
+                <mat-icon>add</mat-icon>
+                Criar grupo
+            </button>
+        </div>
+    
+        <div class="conversations-container">
+            <h2 class="df-list-title">GRUPOS</h2>
+            <div *ngIf="groups.length === 0" class="empty-rooms">
+                <p class="df-list-description">Você não possui um grupo. Que tal criar um?</p>
+                <button type="button" class="default-button" (click)="openCreateGroup()">Criar grupo</button>
+            </div>
+            <div *ngFor="let room of groups"
+                (click)="selectRoom(room)"
+                class="df-contact"
+                [class.selected]="selectedRoom == room.uuid">
+                <div *ngIf="!room.imgUrl" class="fake-img">
+                    <mat-icon>people</mat-icon>
+                </div>
+                <div *ngIf="room.imgUrl" class="avatar-container">
+                    <img class="avatar" [src]="room.imgUrl" />
+                </div>
+                <div class="room-info">
+                    <p class="room-name" [class.active]="room.unreadMessages || selectedRoom === room.uuid">{{ room.name }}</p>
+                </div>
+                <p *ngIf="room.unreadMessages" class="unread-messages">{{ room.unreadMessages }}</p>
+            </div>
+        </div>
+    
+        <div class="conversations-container">
+            <h2 class="df-list-title">MENSAGENS DIRETAS</h2>
+            <div *ngIf="privates.length === 0" class="empty-rooms">
+                <p class="df-list-description">Parece que aqui está vazio. Que tal fazer novas amizades?</p>
+                <button type="button" class="default-button" (click)="openSearchUsers()">Procurar usuários</button>
+            </div>
+            <div *ngFor="let room of privates"
+                (click)="selectRoom(room)"
+                class="df-contact"
+                [class.selected]="selectedRoom == room.uuid">
+                <div *ngIf="!room.imgUrl" class="fake-img">
+                    <mat-icon>people</mat-icon>
+                </div>
+                <div *ngIf="room.imgUrl" class="avatar-container">
+                    <img class="avatar" [src]="room.imgUrl" />
+                </div>
+                <div class="room-info">
+                    <p class="room-name"
+                        [class.active]="room.unreadMessages || selectedRoom === room.uuid">
+                        {{ room.name }}
+                    </p>
+                </div>
+                <p *ngIf="room.unreadMessages" class="unread-messages">{{ room.unreadMessages }}</p>
+                <mat-icon *ngIf="!room.unreadMessages" (click)="setRoomDeleted(room)" class="delete" >close</mat-icon>
+            </div>
+        </div>
+    </div>
+
+</div>

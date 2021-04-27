@@ -1,0 +1,52 @@
+#logged-user-info-component {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 1px #2a2a2a;
+    height: 48px;
+
+    .profile-img {
+        position: relative;
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: rgba(79, 84, 92, 0.4);
+    }
+
+    .user-info {
+        position: relative;
+        flex: 1;
+        margin: 0 12px;
+
+        p {
+            color: #fff;
+        }
+
+        p.name {
+            font-weight: 500;
+            font-size: 14px;
+        }
+    }
+
+    .options {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        mat-icon {
+            cursor: pointer;
+            color: #aaa;
+            font-size: 18px;
+            width: 18px;
+            height: 18px;
+            transition: 0.1s;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}

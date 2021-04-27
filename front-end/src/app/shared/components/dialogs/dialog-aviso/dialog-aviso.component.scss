@@ -1,0 +1,45 @@
+#dialog-aviso {
+    position: relative;
+
+    .texts-container {
+        position: relative;
+        padding: 30px;
+        width: 100%;
+        box-sizing: border-box;
+        background: #2C2F33;
+        h2 {
+            color: #fff;
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        p {
+            color: #ccc;
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+        }
+    }
+
+    .buttons-container {
+        position: relative;
+        background: #23272A;
+        padding: 15px 15px 5px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        
+        button {
+            margin-bottom: 10px;
+            
+            &:not(:last-child) {
+                margin-right: 5px;
+            }
+        }
+
+    }
+
+}

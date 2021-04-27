@@ -1,0 +1,18 @@
+<div id="img-container-component">
+    <label [for]="inputId">
+        <div class="img-container">
+            <img *ngIf="src" [src]="src" />
+            <mat-icon *ngIf="!src">{{ matIcon }}</mat-icon>
+            <div class="background-img">
+                <p>ALTERAR<p>
+                <p>IMAGEM</p>
+            </div>
+        </div>
+    </label>
+    <p *ngIf="src" (click)="removeAvatar()" class="remove-avatar">Remover</p>
+</div>
+
+<input type="file" accept="image/*"
+    [id]="inputId"
+    (change)="onFileChange($event)"
+    style="opacity: 0; height: 0; width: 0; z-index: -1; position: absolute;" />

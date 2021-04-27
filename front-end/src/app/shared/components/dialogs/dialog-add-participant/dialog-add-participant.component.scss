@@ -1,0 +1,122 @@
+#dialog-add-participant {
+    position: relative;
+    width: 100%;
+    background: #36393f;
+    border-radius: 10px !important;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    .dialog-header {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px;
+        box-shadow: 0 2px 1px #2a2a2a;
+
+        .main-info {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 10px;
+
+            h2 {
+                position: relative;
+                color: #fff;
+                font-size: 16px;
+                font-weight: 500;
+            }
+    
+            mat-icon {
+                cursor: pointer;
+                color: #aaa;
+    
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+
+        .input-container {
+            position: relative;
+            width: 100%;
+            border-radius: 4px;
+            height: 25px;
+            background: #1f2124;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 0 5px;
+
+            input {
+                position: relative;
+                flex: 1;
+                height: 100%;
+                background: transparent;
+                color: #fff;
+                font-size: 12px;
+                border: 0;
+
+                &::placeholder {
+                    color: #777;
+                }
+            }
+
+            mat-icon {
+                color: #aaa;
+                font-size: 18px;
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+
+    }
+
+
+    .users-list {
+        position: relative;
+        overflow-y: scroll;
+        padding: 5px 0;
+        box-sizing: border-box;
+
+        .df-contact {
+            button.add-button {
+                position: relative;
+                border: 1px solid #43b581;
+                border-radius: 4px;
+                width: 100px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #43b581;
+                background: transparent;
+            }
+
+            &:hover {
+                button.add-button {
+                    background: rgb(67, 181, 129);
+                    color: #fff;
+                    &:hover {
+                        background: rgba(67, 181, 129, .8);
+                        border: 1px solid rgba(67, 181, 129, .8);
+                    }
+                }
+            }
+
+            mat-icon.check {
+                color: #43b581;
+                font-size: 18px;
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+    }
+
+}

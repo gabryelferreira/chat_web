@@ -1,0 +1,31 @@
+<div id="profile-page" class="df-page-container">
+
+    <title-description [title]="'MINHA CONTA'"
+    [description]="'Aqui você pode alterar suas informações do perfil.'">
+    </title-description>
+
+    <div class="card-edit-profile">
+        <div class="editable-area">
+            
+            <img-container [src]="imgUrl" (onChange)="selectedFile = $event"></img-container>
+
+            <div class="fields">
+                <div class="custom-field">
+                    <p>NOME *</p>
+                    <input type="text" name="name" [(ngModel)]="name" />
+                </div>
+                <div class="custom-field">
+                    <p>E-MAIL *</p>
+                    <input type="text" name="email" [(ngModel)]="email" />
+                </div>
+            </div>
+        </div>
+        <div class="footer-options">
+            <button (click)="exit()" type="button" class="default-button red-hover smaller">Fazer logout</button>
+            <button (click)="save()" type="button" class="default-button green smaller">Salvar</button>
+        </div>
+    </div>
+
+</div>
+
+<loader-background [isLoading]="saving || loading"></loader-background>

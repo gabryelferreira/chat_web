@@ -1,0 +1,33 @@
+<div id="chat-header-component">
+    <div class="main-info">
+        <div class="df-img-container">
+            <div *ngIf="!room.imgUrl" class="d-flex align-items-center justify-content-center">
+                <mat-icon *ngIf="room.idRoomType === 1">person</mat-icon>
+                <mat-icon *ngIf="room.idRoomType === 2">people</mat-icon>
+            </div>
+            <img *ngIf="room.imgUrl" [src]="room.imgUrl" />
+        </div>
+        <p>{{ room.name }}</p>
+    </div>
+    <div class="options">
+        <mat-icon *ngIf="room.idRoomType === 2 && isUserGroupAdmin"
+            class="cursor-pointer"
+            (click)="openManageGroup()"
+            [matTooltip]="'Editar grupo'">
+            settings
+        </mat-icon>
+        <mat-icon *ngIf="room.idRoomType === 2"
+            class="cursor-pointer leave-room"
+            (click)="leaveRoom()"
+            [matTooltip]="'Sair do grupo'">
+            exit_to_app
+        </mat-icon>
+        <mat-icon *ngIf="room.idRoomType === 2"
+            class="cursor-pointer hide-mobile"
+            [class.selected]="chatParticipantsListOpened"
+            (click)="toggleChatParticipantsListOpened()"
+            [matTooltip]="'Participantes'">
+            people_alt
+        </mat-icon>
+    </div>
+</div>

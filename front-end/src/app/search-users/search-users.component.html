@@ -1,0 +1,40 @@
+<div id="search-users-component" class="df-page-container">
+
+    <title-description [title]="'PROCURAR USUÁRIOS'"
+        [description]="'Você pode procurar usuários digitando o email deles abaixo.'"
+    >
+    </title-description>
+
+    <form class="df-search-container" (submit)="searchUsers()">
+        <input autocomplete="off" type="email" [(ngModel)]="email" name="email" placeholder="Insira um email" />
+        <button [disabled]="!email || !email.trim() || email.trim().length < 3 || loading" type="submit">Buscar usuários</button>
+    </form>
+
+    <div *ngIf="users.length === 0" class="search-img-container">
+        <img src="../../assets/imgs/search_image.svg" />
+        <p>Procure seus amigos e inicie uma conversa com eles!</p>
+    </div>
+
+    <div *ngIf="users.length > 0" class="df-users-container">
+        <div class="user-card" *ngFor="let user of users">
+            <div class="card-header">
+                <div class="fake-img">
+                    <mat-icon *ngIf="!user.imgUrl">person</mat-icon>
+                    <img *ngIf="user.imgUrl" class="avatar" [src]="user.imgUrl" />
+                </div>
+                <div class="text-info">
+                    <h3>{{ user.name }}</h3>
+                    <p>{{ user.email }}</p>
+                </div>
+            </div>
+            <button (click)="openChatWithUser(user)" type="button" class="default-button">
+                Iniciar conversa
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<div [class.active]="initializingMessage" class="background-loader">
+    <mat-spinner [diameter]="60"></mat-spinner>
+</div>

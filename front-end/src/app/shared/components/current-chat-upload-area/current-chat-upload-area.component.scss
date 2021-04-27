@@ -1,0 +1,17 @@
+#current-chat-upload-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 199;
+    background: rgb(0, 0, 0, 0.6);
+    transition: 0.2s;
+    opacity: 0;
+    visibility: hidden;
+
+    &.hovering {
+        visibility: initial;
+        opacity: 1;
+    }
+}

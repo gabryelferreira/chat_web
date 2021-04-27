@@ -1,0 +1,33 @@
+#header-component {
+
+    height: 45px;
+    
+    .header-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 45px;
+        background: #1f2124;
+        border-bottom: 1px solid #444;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 15px;
+        z-index: 10;
+
+        mat-icon.hamburguer {
+            margin-right: 15px;
+            font-size: 25px;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 20px;
+        }
+    }
+
+}

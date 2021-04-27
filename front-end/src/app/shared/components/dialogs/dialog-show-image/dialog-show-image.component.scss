@@ -1,0 +1,14 @@
+#dialog-show-image {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+
+    img {
+        position: relative;
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: cover;
+    }
+
+}

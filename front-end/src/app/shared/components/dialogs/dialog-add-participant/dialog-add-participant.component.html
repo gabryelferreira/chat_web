@@ -1,0 +1,36 @@
+<div id="dialog-add-participant">
+    <div class="dialog-header">
+        <div class="main-info">
+            <h2>ADICIONAR USUÁRIO EM {{ room.name | uppercase }}</h2>
+            <mat-icon (click)="closeDialog()">close</mat-icon>
+        </div>
+        <div class="input-container">
+            <input autocomplete="off" type="text" placeholder="Insira um e-mail" [(ngModel)]="email" name="email" (ngModelChange)="search()" />
+            <mat-icon>search</mat-icon>
+        </div>
+    </div>
+    <div class="users-list" [style.overflow-y]="loading ? 'hidden' : 'scroll'">
+        <div *ngFor="let user of users" class="df-contact">
+            <div *ngIf="!user.imgUrl" class="fake-img">
+                <mat-icon>person</mat-icon>
+            </div>
+            <div *ngIf="user.imgUrl" class="avatar-container">
+                <img class="avatar" [src]="user.imgUrl" />
+            </div>
+            <div class="room-info">
+                <p class="room-name">{{ user.name }}</p>
+                <p class="description">{{ user.email }}</p>
+            </div>
+            <button *ngIf="!user.isParticipant"
+                (click)="addParticipant(user)"
+                [disabled]="user.isAdding"
+                type="button"
+                class="add-button">
+                {{ user.isAdding ? 'Adicionando...' : 'Adicionar' }}
+            </button>
+            <mat-icon *ngIf="user.isParticipant" class="check">done</mat-icon>
+        </div>
+
+        <chat-loader *ngIf="loading"></chat-loader>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div id="page-layout">
+    <app-header (onMenuClick)="toggleMenuOpened()" class="hide-desktop"></app-header>
+    <div class="page-layout-container" [class.opened]="isMenuVisibleMobile">
+        <div class="left-container custom-scrollbar">
+            <side-menu (onCloseMenu)="isMenuVisibleMobile = false"></side-menu>
+        </div>
+        <div class="right-container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<form id="dialog-send-file" (submit)="sendFile()">
+    <div class="texts-container">
+      <div class="header">
+          <div class="img-wrapper" [class.no-bg]="attachmentType === 2">
+            <img *ngIf="attachmentType === 1" (load)="onFileLoad($event)" [src]="file.src" />
+            <img *ngIf="attachmentType === 2" src="../../../../../assets/imgs/video-icon.svg" />
+          </div>
+          <h2>{{ file.name }}</h2>
+      </div>
+      <p class="comment-label">ADICIONAR UM COMENTÁRIO <span>(OPCIONAL)</span></p>
+      <div class="comment-container">
+          <input type="text" name="comment" [(ngModel)]="comment" />
+      </div>
+    </div>
+    <div class="buttons-container">
+      <button type="button" class="default-button smaller transparent" (click)="closeDialog()">Cancelar</button>
+      <button type="submit" class="default-button smaller">Enviar</button>
+    </div>
+  </form>
+  

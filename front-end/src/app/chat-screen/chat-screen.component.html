@@ -1,0 +1,77 @@
+<div id="chat-screen">
+
+    <chat-header [room]="selectedChat"
+        [isUserGroupAdmin]="isUserGroupAdmin"
+        (onLeaveRoom)="leaveRoom()"
+        [chatParticipantsListOpened]="chatParticipantsListOpened"
+        (onToggleChatParticipantsList)="toggleChatParticipantsListOpened()"
+    ></chat-header>
+
+    <div class="forms-current-chat">
+
+        <div class="form-container">
+
+            <current-chat-upload-area (onSubmit)="onFileSent($event)"></current-chat-upload-area>
+    
+            <div class="messages-wrapper">
+                
+                <div (scroll)="onScroll()" id="message-content" class="messages custom-scrollbar">
+        
+                    <div *ngIf="noMoreMessages" class="room-created">
+                        <div class="header-container">
+                            <div *ngIf="!selectedChat.imgUrl" class="img-container">
+                                <mat-icon *ngIf="selectedChat.idRoomType === 1">person</mat-icon>
+                                <mat-icon *ngIf="selectedChat.idRoomType === 2">people</mat-icon>
+                            </div>
+                            <div *ngIf="selectedChat.imgUrl" class="img-container">
+                                <img [src]="selectedChat.imgUrl" />
+                            </div>
+                            <p>{{ selectedChat.name }}</p>
+                        </div>
+                        <p *ngIf="selectedChat.idRoomType === 1" class="info">Este é o início do seu histórico de mensagens diretas com {{ selectedChat.name }}.</p>
+                        <p *ngIf="selectedChat.idRoomType === 2" class="info">Este é o início do seu histórico de mensagens em grupo com {{ selectedChat.name }}.</p>
+                    </div>
+        
+                    <chat-message *ngFor="let message of messages; let i = index"
+                        [message]="message"
+                        [messageBefore]="i === 0 ? null : messages[i - 1]"
+                        style="width: 100%;">
+                    </chat-message>
+        
+        
+                </div>
+        
+                <chat-loader *ngIf="loadingInitial"></chat-loader>
+            </div>
+        
+        
+            <form class="text-input-container" (submit)="validateCreateMessage()">
+                <div class="input-container">
+                    <input autocomplete="off"
+                        type="text"
+                        name="message"
+                        [(ngModel)]="message"
+                        (ngModelChange)="verifyLoggedUserTyping()"
+                        placeholder="Digite uma mensagem" />
+                </div>
+                <p class="user-typing">{{ userTyping }}</p>
+            </form>
+            
+    
+        </div>
+    
+        <chat-participants-list *ngIf="selectedChat.idRoomType === 2"
+            [isUserGroupAdmin]="isUserGroupAdmin"
+            [room]="selectedChat"
+            [isOpened]="chatParticipantsListOpened"
+            style="height: 100%"
+        ></chat-participants-list>
+
+    </div>
+
+    
+
+
+</div>
+
+<loader-background [isLoading]="isCreatingChat || isLeavingRoom || isUploadingFile"></loader-background>

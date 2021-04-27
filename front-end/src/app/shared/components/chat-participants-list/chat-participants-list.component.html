@@ -1,0 +1,28 @@
+<div *ngIf="isOpened" class="df-contacts-list hide-mobile" id="chat-participants-list">
+    <p class="df-list-title">PARTICIPANTES DO GRUPO</p>
+    <div *ngFor="let participant of room.participants" class="df-contact">
+        <div *ngIf="!participant.user.imgUrl" class="fake-img">
+            <mat-icon>person</mat-icon>
+        </div>
+        <div *ngIf="participant.user.imgUrl" class="avatar-container">
+            <img class="avatar" [src]="participant.user.imgUrl" />
+        </div>
+        <div class="room-info">
+            <p class="room-name">{{ participant.user.name }}</p>
+        </div>
+        <mat-icon *ngIf="isUserGroupAdmin && participant.user.uuid !== loggedUser.uuid"
+            (click)="confirmDeleteParticipant(participant)"
+            class="delete"
+            [matTooltip]="'Remover usuário'">
+            close
+        </mat-icon>
+    </div>
+    <div *ngIf="isUserGroupAdmin" (click)="addParticipant()" class="df-contact">
+        <div class="fake-img transparent">
+            <mat-icon>add</mat-icon>
+        </div>
+        <div class="room-info">
+            <p class="room-name">Adicionar participante</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div id="dialog-create-group">
+    <div class="content">
+        <div class="header">
+            <h2>{{ room ? 'Editar grupo' : 'Criar um grupo' }}</h2>
+            <mat-icon (click)="close()">close</mat-icon>
+        </div>
+        <p class="description">Os grupos são onde os membros se comunicam. Eles funcionam melhor quando organizados por assunto, por exemplo, #marketing.</p>
+        <div class="img-container">
+            <img-container [src]="imgUrl" [matIcon]="'add_photo_alternate'" (onChange)="onFileChange($event)"></img-container>
+            <p *ngIf="!imgUrl" class="img-container-description">Tamanho recomendado: <span>128x128</span></p>
+        </div>
+        <br />
+        <br />
+        <div class="custom-field">
+            <p>NOME DO GRUPO</p>
+            <input autocomplete="off" type="text" name="name" [(ngModel)]="name" />
+        </div>
+    </div>
+    <div class="buttons">
+        <button *ngIf="!room" (click)="createGroup()" type="button" class="default-button smaller" [disabled]="!name || !name.trim() || creatingGroup">
+            {{ creatingGroup ? "Criando..." : "Criar grupo" }}
+        </button>
+        <button *ngIf="room" (click)="updateGroup()" type="button" class="default-button smaller" [disabled]="!name || !name.trim() || updatingGroup">
+            {{ updatingGroup ? "Salvando..." : "Salvar" }}
+        </button>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div id="login-screen">
+    <div class="background-img-container">
+        <img src="../../assets/imgs/login-background.jpg" />
+    </div>
+
+    <div class="login-all-forms">
+
+        <form (submit)="login()" class="login-form" [class.hide]="!loginOpened && criarContaClicked" [class.show]="loginOpened && criarContaClicked">
+            <div class="header-container">
+                <h2>Bem vindo!</h2>
+                <p>Estamos felizes de te ver por aqui!</p>
+            </div>
+            <div class="fields-container">
+                <div class="custom-field">
+                    <p>EMAIL</p>
+                    <input [disabled]="loadingLogin" [(ngModel)]="email" name="email" type="email" />
+                </div>
+                <div class="custom-field">
+                    <p>SENHA</p>
+                    <input [disabled]="loadingLogin" [(ngModel)]="password" name="password" type="password" />
+                </div>
+                <button [disabled]="loadingLogin" type="submit" class="default-button">
+                    {{ loadingLogin ? "Autenticando..." : "Login" }}
+                </button>
+            </div>
+            <!-- <p class="link-button" [class.disabled]="loadingLogin">Esqueceu a senha?</p> -->
+            <p class="link-button" [class.disabled]="loadingLogin" (click)="toggleLoginOpened()">Criar conta</p>
+        </form>
+
+        <form (submit)="createAccount()" *ngIf="criarContaClicked" class="login-form" [class.hide]="loginOpened" [class.show]="!loginOpened">
+            <div class="header-container">
+                <h2>Cadastre-se</h2>
+                <p>Crie uma conta e faça parte do nosso time!</p>
+            </div>
+            <div class="fields-container">
+                <div class="custom-field">
+                    <p>EMAIL</p>
+                    <input [disabled]="loadingCreateAccount" [(ngModel)]="email" name="email" type="email" />
+                </div>
+                <div class="custom-field">
+                    <p>NOME</p>
+                    <input [disabled]="loadingCreateAccount" [(ngModel)]="name" name="name" type="text" />
+                </div>
+                <div class="custom-field">
+                    <p>SENHA</p>
+                    <input [disabled]="loadingCreateAccount" [(ngModel)]="password" name="password" type="password" />
+                </div>
+                <button [disabled]="loadingCreateAccount" type="submit" class="default-button">
+                    {{ loadingCreateAccount ? "Cadastrando..." : "Cadastrar" }}
+                </button>
+            </div>
+            <p class="link-button" [class.disabled]="loadingCreateAccount" (click)="toggleLoginOpened()">Já possuo uma conta</p>
+        </form>
+
+    </div>
+
+
+</div>

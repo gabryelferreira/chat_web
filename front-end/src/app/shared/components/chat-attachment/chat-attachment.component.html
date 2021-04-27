@@ -1,0 +1,15 @@
+<div *ngIf="attachment?.url" class="attachment">
+    <img *ngIf="attachment.type === 1"
+        (click)="openDialogShowImage(attachment.url)"
+        [src]="attachment.url"
+        [style.height.px]="attachment.height ? attachment.height : 'auto'"
+        [style.width.px]="attachment.width ? attachment.width : 'auto'" />
+    <video *ngIf="attachment.type === 2"
+        class="attachment"
+        [style.height.px]="attachment.height ? attachment.height : 'auto'"
+        [style.width.px]="attachment.width ? attachment.width : 'auto'"
+        controls>
+        <source [src]="attachment.url" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+</div>

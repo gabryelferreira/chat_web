@@ -1,0 +1,50 @@
+#chat-header-component {
+    position: relative;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 2;
+    box-shadow: 0 2px 1px #2d2d2d;
+
+    .main-info {
+        display: flex;
+        align-items: center;
+
+        .df-img-container {
+            position: relative;
+            margin-right: 15px;
+        }
+
+        p {
+            color: #fff;
+            font-weight: 500;
+            font-size: 14.5px;
+        }
+    }
+
+    .options {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        mat-icon {
+            color: #ccc;
+            margin-left: 20px;
+            transition: 0.15s;
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+
+            &.leave-room:hover {
+                color: #f04747;
+            }
+
+            &.selected,
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}
