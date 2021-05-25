@@ -14,9 +14,9 @@ To run the project in your local machine, you first need to setup some stuffs:
 
 ## Running the project
 
-After that, to run the front end, type `cd front_end && npm i && ng serve`.
+After that, to run the front end, type `cd front_end && npm ci && ng serve`.
 
-To run the backend, in project's directory, type `cd back_end && npm i`.
+To run the backend, in project's directory, type `cd back_end && npm ci`.
 After that, you will need to create a database in MySQL and put the same credentials in the .env file.
 Database created, run `npm run migration` in the back_end folder to create the necessary tables.
 All set, just run `npm run dev` and you're ready to go.
